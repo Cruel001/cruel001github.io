@@ -18,10 +18,70 @@ body {
     height: 100vh;
     background: url('background.png') no-repeat center center fixed;
     background-size: cover;
+    font-family: 'Russo One', sans-serif;
+    animation: fadeInBody 1.2s ease forwards;
+    opacity: 0;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.nav-item:hover {
+    color: #00ff88;
+}
+
+.nav-item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 2px;
+    background: #00ff88;
+    transition: 0.3s;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+.discord-nav {
+    color: #5865F2;
+}
+
+.active {
+    color: #00ff88;
+}
+
+/* ===== CENTER PANEL ===== */
+.center {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: 'Russo One', sans-serif;
 }
 
 .overlay {
@@ -31,11 +91,15 @@ body {
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 0 40px rgba(0,0,0,0.8);
+    margin-top: 80px;
 }
 
+/* ===== LOGO ===== */
 .logo {
     width: 340px;
     margin-bottom: 35px;
+    animation: logoDrop 1.2s ease forwards;
+    opacity: 0;
     filter: drop-shadow(0 0 10px rgba(255,120,0,0.6))
             drop-shadow(0 0 20px rgba(255,80,0,0.4));
     transition: 0.4s ease;
@@ -47,14 +111,18 @@ body {
     transform: scale(1.05);
 }
 
-
+/* ===== TITLE ===== */
 .title {
     font-size: 32px;
     color: white;
     margin-bottom: 40px;
     text-shadow: 3px 3px 0px black;
+    animation: fadeSlide 1.4s ease forwards;
+    animation-delay: 0.6s;
+    opacity: 0;
 }
 
+/* ===== IP BOX ===== */
 .ip-box {
     display: inline-flex;
     align-items: center;
@@ -63,6 +131,9 @@ body {
     border-radius: 12px;
     box-shadow: 0 6px 0 black;
     margin-bottom: 25px;
+    animation: fadeSlide 1.4s ease forwards;
+    animation-delay: 1s;
+    opacity: 0;
 }
 
 .ip-text {
@@ -84,6 +155,7 @@ body {
     background: #00cc55;
 }
 
+/* ===== DISCORD BUTTON ===== */
 .discord-btn {
     display: inline-block;
     background: #5865F2;
@@ -93,37 +165,78 @@ body {
     text-decoration: none;
     font-size: 16px;
     transition: 0.3s;
+    animation: fadeSlide 1.4s ease forwards;
+    animation-delay: 1.4s;
+    opacity: 0;
 }
 
 .discord-btn:hover {
     transform: scale(1.05);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInBody {
+    to { opacity: 1; }
+}
+
+@keyframes logoDrop {
+    0% {
+        transform: translateY(-80px) scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeSlide {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="overlay">
-
-    <img src="logo.png" class="logo">
-
-    <div class="title">
-        Azərbaycanın ilk Minecraft Serverinə xoş gəldiniz
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#" class="nav-item active">Ana Səhifə</a>
+        <a href="#qaydalar" class="nav-item">Qaydalar</a>
+        <a href="#yetkililer" class="nav-item">Yetkililər</a>
+        <a href="#" class="nav-item discord-nav">Discord</a>
     </div>
+</nav>
 
-    <div class="ip-box">
-        <div class="ip-text" id="ip">
-            curelmc.aternos.me:34467
+<div class="center">
+    <div class="overlay">
+
+        <img src="logo.png" class="logo">
+
+        <div class="title">
+            Azərbaycanın ilk Minecraft Serverinə xoş gəldiniz
         </div>
-        <button class="copy-btn" onclick="copyIP()">Kopyala</button>
+
+        <div class="ip-box">
+            <div class="ip-text" id="ip">
+                cruelmc.aternos.me:34467
+            </div>
+            <button class="copy-btn" onclick="copyIP()">Kopyala</button>
+        </div>
+
+        <br>
+
+        <a href="#" class="discord-btn">
+            Discord'a Qoşul
+        </a>
+
     </div>
-
-    <br>
-
-    <a href="#" class="discord-btn">
-        Discord'a Qoşul
-    </a>
-
 </div>
 
 <script>
