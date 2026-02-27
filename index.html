@@ -41,6 +41,51 @@ body {
     background: #4752C4;
     transform: scale(1.07);
 }
+.ip-box {
+    margin-top: 25px;
+    background: #2b2b2b;
+    padding: 15px 25px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 0 #1a1a1a;
+    position: relative;
+}
+
+#server-ip {
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.copy-btn {
+    background: #3c8527;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #2a5f1b;
+    transition: 0.1s ease;
+}
+
+.copy-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #2a5f1b;
+}
+
+.copied {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    color: #3c8527;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
 /* Logo */
 .logo-container {
@@ -100,7 +145,12 @@ body {
 <h1 class="main-title">Azərbaycanın İlk Minecraft Serveri</h1>
 
 <div class="info">
-    <p>Sunucu IP ünvanı: yaxın zamanda...</p>
+    <div class="ip-box">
+    <span id="server-ip">curelmc.aternos.me:34467</span>
+    <button onclick="copyIP()" class="copy-btn">📋</button>
+    <span id="copied-text" class="copied">Kopyalandı!</span>
+</div>
+
     <a href="https://discord.gg/PZDHWBKz" target="_blank" class="discord-btn">
     Discord'a Qoşul</a>
 
@@ -109,6 +159,20 @@ body {
 <div class="footer">
     <p>© 2026 CruelMC Network - Bütün Hüquqlar Qorunur</p>
 </div>
+<script>
+function copyIP() {
+    const ip = document.getElementById("server-ip").innerText;
+    const copiedText = document.getElementById("copied-text");
+
+    navigator.clipboard.writeText(ip);
+
+    copiedText.style.opacity = "1";
+
+    setTimeout(() => {
+        copiedText.style.opacity = "0";
+    }, 1500);
+}
+</script>
 
 </body>
 </html>
