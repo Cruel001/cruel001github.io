@@ -5,151 +5,132 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CruelMC</title>
 
-<!-- AZ əlifba dəstəyi olan sərt font -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 
 <style>
-
-body {
+* {
     margin: 0;
     padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    color: white;
+    box-sizing: border-box;
+}
 
+body {
+    height: 100vh;
+    background: url('background.png') no-repeat center center fixed;
+    background-size: cover;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-
-    background:
-        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
-        url('https://images.alphacoders.com/633/633151.jpg');
-    background-size: cover;
-    background-position: center;
+    font-family: 'Russo One', sans-serif;
 }
 
-/* LOGO */
-.logo img {
-    width: 420px;
-    margin-bottom: 30px;
-}
-
-/* MINECRAFT STONE STYLE TITLE */
-.main-title {
-    font-size: 34px;
-    font-weight: 900;
+.overlay {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    padding: 60px 80px;
+    border-radius: 20px;
     text-align: center;
-    letter-spacing: 1px;
-
-    color: #e0e0e0;
-
-    text-shadow:
-        3px 3px 0 #000,
-        5px 5px 0 #111,
-        7px 7px 0 #000;
+    box-shadow: 0 0 40px rgba(0,0,0,0.8);
 }
 
-/* IP BOX */
+.logo {
+    width: 340px;
+    margin-bottom: 35px;
+    filter: drop-shadow(0 0 10px rgba(255,120,0,0.6))
+            drop-shadow(0 0 20px rgba(255,80,0,0.4));
+    transition: 0.4s ease;
+}
+
+.logo:hover {
+    filter: drop-shadow(0 0 15px rgba(255,140,0,0.8))
+            drop-shadow(0 0 30px rgba(255,90,0,0.6));
+    transform: scale(1.05);
+}
+
+
+.title {
+    font-size: 32px;
+    color: white;
+    margin-bottom: 40px;
+    text-shadow: 3px 3px 0px black;
+}
+
 .ip-box {
-    margin-top: 40px;
-    background: #1f1f1f;
-    padding: 18px 28px;
-    border-radius: 8px;
     display: inline-flex;
     align-items: center;
-    gap: 14px;
-    box-shadow: 0 6px 0 #000;
-    position: relative;
+    background: #111;
+    padding: 15px 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 0 black;
+    margin-bottom: 25px;
 }
 
-#server-ip {
-    font-weight: 800;
-    letter-spacing: 1px;
+.ip-text {
+    color: #00ff88;
+    font-size: 18px;
+    margin-right: 15px;
 }
 
 .copy-btn {
-    background: #3c8527;
-    color: white;
+    background: #00aa44;
     border: none;
     padding: 8px 14px;
-    font-size: 16px;
-    font-weight: 800;
     border-radius: 6px;
     cursor: pointer;
-    box-shadow: 0 4px 0 #2a5f1b;
-    transition: 0.1s ease;
+    font-weight: bold;
 }
 
-.copy-btn:active {
-    transform: translateY(4px);
-    box-shadow: 0 0 0 #2a5f1b;
+.copy-btn:hover {
+    background: #00cc55;
 }
 
-.copied {
-    position: absolute;
-    bottom: -28px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 14px;
-    color: #4CAF50;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-/* DISCORD */
 .discord-btn {
-    margin-top: 35px;
-    padding: 14px 30px;
+    display: inline-block;
     background: #5865F2;
     color: white;
-    text-decoration: none;
-    font-weight: 800;
+    padding: 12px 30px;
     border-radius: 10px;
-    transition: 0.3s ease;
+    text-decoration: none;
     font-size: 16px;
+    transition: 0.3s;
 }
 
 .discord-btn:hover {
-    background: #4752C4;
-    transform: scale(1.07);
+    transform: scale(1.05);
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="logo">
-    <img src="LOGOTEXT.png" alt="CruelMC Logo">
+<div class="overlay">
+
+    <img src="logo.png" class="logo">
+
+    <div class="title">
+        Azərbaycanın ilk Minecraft Serverinə xoş gəldiniz
+    </div>
+
+    <div class="ip-box">
+        <div class="ip-text" id="ip">
+            curelmc.aternos.me:34467
+        </div>
+        <button class="copy-btn" onclick="copyIP()">Kopyala</button>
+    </div>
+
+    <br>
+
+    <a href="#" class="discord-btn">
+        Discord'a Qoşul
+    </a>
+
 </div>
-
-<h1 class="main-title">
-    Azərbaycanın ilk Minecraft Serverinə xoş gəldiniz
-</h1>
-
-<div class="ip-box">
-    <span id="server-ip">curelmc.aternos.me:34467</span>
-    <button onclick="copyIP()" class="copy-btn">📋</button>
-    <span id="copied-text" class="copied">Kopyalandı!</span>
-</div>
-
-<a href="https://discord.gg/PZDHWBKz" target="_blank" class="discord-btn">
-    Discord'a Qoşul
-</a>
 
 <script>
 function copyIP() {
-    const ip = document.getElementById("server-ip").innerText;
-    const copiedText = document.getElementById("copied-text");
-
+    const ip = document.getElementById("ip").innerText;
     navigator.clipboard.writeText(ip);
-
-    copiedText.style.opacity = "1";
-
-    setTimeout(() => {
-        copiedText.style.opacity = "0";
-    }, 1500);
+    alert("IP kopyalandı!");
 }
 </script>
 
