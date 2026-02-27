@@ -5,267 +5,145 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CruelMC</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-html{ scroll-behavior:smooth; }
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:url('background.png') no-repeat center center fixed;
-    background-size:cover;
-    font-family:'Montserrat', sans-serif;
-    color:white;
+background:url("background.png") no-repeat center center/cover;
+color:white;
+text-align:center;
+overflow-x:hidden;
 }
 
 /* NAVBAR */
-.navbar{
-    position:fixed;
-    top:0;
-    width:100%;
-    padding:20px 0;
-    background:rgba(0,0,0,0.75);
-    backdrop-filter:blur(8px);
-    display:flex;
-    justify-content:center;
-    z-index:1000;
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(8px);
+padding:18px;
+z-index:1000;
 }
 
-.nav-container{
-    display:flex;
-    gap:45px;
+nav a{
+color:white;
+margin:0 25px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
 }
 
-.nav-item{
-    color:white;
-    text-decoration:none;
-    font-size:16px;
-    font-weight:600;
-    transition:0.3s;
-}
-
-.nav-item:hover{
-    color:#00ff88;
-}
-
-/* SECTIONS */
-.section{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:120px 20px;
-}
-
-/* PANEL */
-.panel{
-    background:rgba(0,0,0,0.65);
-    backdrop-filter:blur(6px);
-    padding:60px 80px;
-    border-radius:20px;
-    text-align:center;
-    box-shadow:0 0 40px rgba(0,0,0,0.8);
-    max-width:850px;
+nav a:hover{
+color:#ff8c00;
 }
 
 /* LOGO */
 .logo{
-    width:360px;
-    margin-bottom:30px;
+margin-top:140px;
+transition:0.4s;
 }
 
-/* TITLE */
-.title{
-    font-size:26px;
-    margin-bottom:25px;
-    font-weight:700;
+.logo img{
+width:280px;
+transition:0.4s;
+filter:drop-shadow(0 0 20px rgba(255,140,0,0.6));
 }
 
-/* IP */
-.ip-box{
-    display:inline-flex;
-    align-items:center;
-    background:#111;
-    padding:15px 22px;
-    border-radius:12px;
-    box-shadow:0 6px 0 black;
-    margin-bottom:20px;
+.logo:hover img{
+transform:scale(1.08);
+filter:drop-shadow(0 0 40px rgba(255,140,0,1));
 }
 
-.ip-text{
-    color:#00ff88;
-    font-size:18px;
-    margin-right:15px;
+/* BUTTONS */
+.buttons{
+margin-top:50px;
 }
 
-.copy-btn{
-    background:#00aa44;
-    border:none;
-    padding:8px 14px;
-    border-radius:6px;
-    cursor:pointer;
-    font-weight:600;
-    transition:0.3s;
+.btn{
+display:inline-block;
+padding:15px 35px;
+margin:15px;
+border:2px solid #ff8c00;
+border-radius:12px;
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+background:rgba(0,0,0,0.6);
 }
 
-.copy-btn:hover{
-    background:#00cc55;
+.btn:hover{
+transform:scale(1.08);
+background:#ff8c00;
 }
 
-/* DISCORD */
-.discord-btn{
-    display:inline-block;
-    background:#5865F2;
-    color:white;
-    padding:12px 30px;
-    border-radius:10px;
-    text-decoration:none;
-    font-size:16px;
-    transition:0.3s;
-    font-weight:600;
-    margin-bottom:25px;
-}
-
-.discord-btn:hover{
-    transform:scale(1.05);
-}
-
-/* SERVER STATUS (çərçivəsiz, düymələrin altında) */
+/* SERVER STATUS */
 .server-status{
-    font-size:18px;
-    font-weight:600;
-    margin-top:10px;
+margin-top:30px;
+font-size:18px;
+opacity:0.95;
 }
 
-.online{ color:#00ff88; }
-.offline{ color:#ff3c3c; }
-
-/* RULES */
-.rules{
-    opacity:0;
-    transform:translateY(60px);
-    transition:1s ease;
-}
-
-.rules.active{
-    opacity:1;
-    transform:translateY(0);
-}
-
-.rules h1{
-    color:#00ff88;
-    margin-bottom:30px;
-}
-
-.rule{
-    margin-bottom:15px;
-    line-height:1.7;
-    font-size:17px;
+/* FOOTER */
+footer{
+margin-top:80px;
+padding:20px;
+background:rgba(0,0,0,0.6);
+font-size:14px;
 }
 </style>
 </head>
 
 <body>
 
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="#home" class="nav-item">Ana Səhifə</a>
-        <a href="#rules" class="nav-item">Qaydalar</a>
-    </div>
+<nav>
+<a href="index.html">Ana Səhifə</a>
+<a href="qaydalar.html">Qaydalar</a>
 </nav>
 
-<!-- ANA SEHIFE -->
-<section id="home" class="section">
-    <div class="panel">
+<div class="logo">
+<img src="LOGOTEXT.png">
+</div>
 
-        <img src="LOGOTEXT.png" class="logo">
+<div class="buttons">
+<a class="btn" href="#" onclick="copyIP()">IP-ni Kopyala</a>
+<a class="btn" href="https://discord.gg/PZDHWBKz" target="_blank">Discord</a>
+</div>
 
-        <div class="title">
-            Azərbaycanın ilk Minecraft serverinə xoş gəlmisiniz
-        </div>
+<div class="server-status">
+<p id="status">Server yoxlanılır...</p>
+</div>
 
-        <div class="ip-box">
-            <div class="ip-text" id="ip">
-                cruelmc.aternos.me:34467
-            </div>
-            <button class="copy-btn" onclick="copyIP()">Kopyala</button>
-        </div>
-
-        <a href="https://discord.gg/PZDHWBKz" target="_blank" class="discord-btn">
-            Discord serverimizə qoşul
-        </a>
-
-        <!-- STATUS BURADADIR -->
-        <div class="server-status" id="serverStatus">
-            Server yoxlanılır...
-        </div>
-
-    </div>
-</section>
-
-<!-- QAYDALAR -->
-<section id="rules" class="section">
-    <div class="panel rules" id="rulesPanel">
-
-        <h1>Server Qaydaları</h1>
-
-        <div class="rule">1️⃣ Hörmətli olun. Söyüş və təhqir qadağandır.</div>
-        <div class="rule">2️⃣ Hacking və cheat istifadə etmək qadağandır.</div>
-        <div class="rule">3️⃣ Başqa oyunçuların əşyalarını icazəsiz götürmək olmaz.</div>
-        <div class="rule">4️⃣ Serverdə reklam etmək qadağandır.</div>
-        <div class="rule">5️⃣ Admin və moderator qərarlarına hörmət edin.</div>
-        <div class="rule">6️⃣ Bug tapdıqda rəhbərliyə bildirin.</div>
-
-    </div>
-</section>
+<footer>
+© 2026 CruelMC | Bütün hüquqlar qorunur.
+</footer>
 
 <script>
 function copyIP(){
-    const ip=document.getElementById("ip").innerText;
-    navigator.clipboard.writeText(ip);
-    alert("IP kopyalandı!");
+navigator.clipboard.writeText("play.cruelmc.az");
+alert("IP kopyalandı!");
 }
 
-const serverIP = "cruelmc.aternos.me";
-const serverPort = "34467";
-
-function checkServer(){
-    fetch(`https://mcapi.us/server/status?ip=${serverIP}&port=${serverPort}`)
-    .then(response => response.json())
-    .then(data => {
-        const box = document.getElementById("serverStatus");
-        if(data.online){
-            box.innerHTML =
-            "<span class='online'>● Server Aktivdir</span> | " +
-            "Oyunçular: " + data.players.now + " / " + data.players.max;
-        }else{
-            box.innerHTML =
-            "<span class='offline'>● Server Aktiv Deyil</span>";
-        }
-    })
-    .catch(()=>{
-        document.getElementById("serverStatus").innerHTML =
-        "<span class='offline'>Status yoxlanıla bilmədi</span>";
-    });
+/* SERVER STATUS API */
+fetch("https://api.mcsrvstat.us/2/play.cruelmc.az")
+.then(res=>res.json())
+.then(data=>{
+if(data.online){
+document.getElementById("status").innerHTML=
+"🟢 Server Aktivdir | 👥 Oyunçu sayı: " +
+data.players.online + "/" + data.players.max;
+}else{
+document.getElementById("status").innerHTML=
+"🔴 Server Hal-hazırda Offline-dir";
 }
-
-checkServer();
-setInterval(checkServer, 30000);
-
-const rulesPanel = document.getElementById("rulesPanel");
-
-window.addEventListener("scroll", () => {
-    const position = rulesPanel.getBoundingClientRect().top;
-    const screenHeight = window.innerHeight;
-
-    if(position < screenHeight - 100){
-        rulesPanel.classList.add("active");
-    }
 });
 </script>
 
