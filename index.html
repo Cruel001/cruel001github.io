@@ -5,13 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CruelMC</title>
 
-<!-- Azərbaycan əlifbasını tam dəstəkləyən font -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
-html{
-    scroll-behavior:smooth;
-}
+html{ scroll-behavior:smooth; }
 
 *{
     margin:0;
@@ -63,18 +60,6 @@ body{
     justify-content:center;
     align-items:center;
     padding:120px 20px;
-    position:relative;
-}
-
-/* Gradient keçid */
-.section::after{
-    content:"";
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:100%;
-    height:120px;
-    background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 100%);
 }
 
 /* PANEL */
@@ -86,15 +71,12 @@ body{
     text-align:center;
     box-shadow:0 0 40px rgba(0,0,0,0.8);
     max-width:850px;
-    z-index:2;
 }
 
 /* LOGO */
 .logo{
     width:360px;
     margin-bottom:30px;
-    filter:drop-shadow(0 0 12px rgba(255,120,0,0.6))
-           drop-shadow(0 0 25px rgba(255,80,0,0.4));
 }
 
 /* TITLE */
@@ -146,18 +128,18 @@ body{
     font-size:16px;
     transition:0.3s;
     font-weight:600;
+    margin-bottom:25px;
 }
 
 .discord-btn:hover{
     transform:scale(1.05);
 }
 
-/* SERVER STATUS */
+/* SERVER STATUS (çərçivəsiz, düymələrin altında) */
 .server-status{
-    text-align:center;
     font-size:18px;
-    margin:50px 0;
     font-weight:600;
+    margin-top:10px;
 }
 
 .online{ color:#00ff88; }
@@ -218,6 +200,11 @@ body{
             Discord serverimizə qoşul
         </a>
 
+        <!-- STATUS BURADADIR -->
+        <div class="server-status" id="serverStatus">
+            Server yoxlanılır...
+        </div>
+
     </div>
 </section>
 
@@ -236,11 +223,6 @@ body{
 
     </div>
 </section>
-
-<!-- SERVER STATUS EN ALTDADIR -->
-<div class="server-status" id="serverStatus">
-    Server yoxlanılır...
-</div>
 
 <script>
 function copyIP(){
